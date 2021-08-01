@@ -1,0 +1,9 @@
+{% if address_book %}
+    <ul>
+    {% for address in address_book %}
+        <h1>{{ address }}</h1>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No addresses are available.</p>
+{% endif %}
