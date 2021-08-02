@@ -7,8 +7,8 @@ class Address(models.Model):
     street_name = models.CharField(max_length=200)
     house_number = models.IntegerField()
     zip_code = models.CharField(max_length=200)
+    #One user can have multiple addresses
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True)
-    #owner = models.ForeignKey('auth.User', related_name='address', on_delete=models.CASCADE)
 
     def __str__(self):
       return self.street_name + ' ' + str(self.house_number) + ' ' + self.zip_code

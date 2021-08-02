@@ -12,7 +12,6 @@ from .serializers import UserSerializer
 from django.contrib.auth.models import User
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from .permissions import IsOwnerOrReadOnly
 from rest_framework import status
 from django.http import QueryDict
 
@@ -20,27 +19,16 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    """ def get_object(self):
-        pk = self.kwargs.get('pk')
-
-        if pk == "current":
-            return self.request.user
-
-        return super(UserViewSet, self).get_object() """
-
 class AddressViewSet(viewsets.ModelViewSet):
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
-
-    #permission_classes = (IsOwnerOrReadOnly,)
-
-    #queryset = Address.objects.all()logout 
-    #queryset = Address.objects.filter(owner=self.request.user)
     serializer_class = AddressSerializer
 
     def get_queryset(self):
-        #queryset = Address.objects.all()
         queryset = Address.objects.filter(user=self.request.user)
+
+        #User is able to retrieve all their postal addresses and also to filter 
+        # retrieved addresses using request parameters like street name, house number or zip code.
         ad_id = self.request.query_params.get('ad_id')
         street_name = self.request.query_params.get('street_name')
         house_number = self.request.query_params.get('house_number')

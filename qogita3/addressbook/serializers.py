@@ -10,7 +10,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id','username', 'email')
 
 class AddressSerializer(serializers.HyperlinkedModelSerializer):
-    #owner = serializers.Field('owner.username', read_only=False)
 
     class Meta:
         model = Address
