@@ -79,3 +79,9 @@ Below is my attempt to delete multiple addresses. I tried to use QueryDict. If I
 
 I also didn't complete the logout bonus requirement. I did some research online and all of them said it is not possible to logout using basic authentication. But I found a tutorial using a third party app which had clear endpoints for logging out. The problem is it only works with TokenAuthentication, which actually would be a better choice for this code challenge as one of the assumptions says that the API would be used by public and internal websites and native mobile apps. However, I assume that I had to use BasicAuthentication due to the bonus requirement that says: "User is able to authenticate with username and a password".
 
+Apart from these two requirements I was able to complete all the requirements requested in the code challenge.
+
+Thanks for the opportunity!
+
+Eduardo
+
